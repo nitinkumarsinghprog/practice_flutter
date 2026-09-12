@@ -3,11 +3,11 @@ import "package:dio/dio.dart";
 class ApiService {
   final Dio dio = Dio();
 
-  Future<Map<String, dynamic>> getUsers() async {
+  Future<Response> get(String url) async {
     try {
-      final response = await dio.get('https://dummyjson.com/users');
+      final response = await dio.get(url);
 
-      return response.data;
+      return response;
     } on DioException catch (e) {
       throw Exception(e.message);
     }

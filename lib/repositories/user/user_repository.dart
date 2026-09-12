@@ -9,9 +9,9 @@ class UserRepository implements IUserRepository {
 
   @override
   Future<List<UserModel>> getUsers() async {
-    final response = await apiService.getUsers();
+    final response = await apiService.get('https://dummyjson.com/users');
 
-    final List<UserModel> users = (response['users'] as List)
+    final List<UserModel> users = (response.data['users'] as List)
         .map((user) => UserModel.fromJson(user))
         .toList();
 
