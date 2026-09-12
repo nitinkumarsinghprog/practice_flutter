@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:practice_flutter/common/card.dart';
+import 'package:practice_flutter/common/recipe_card.dart';
 import 'package:practice_flutter/cubit/recipes_cubit/recipes_cubit.dart';
 
 class RecipesPage extends StatefulWidget {
