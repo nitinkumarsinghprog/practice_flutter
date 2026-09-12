@@ -13,48 +13,46 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          Center(
-            child: Column(
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => BlocProvider(
-                          create: (context) =>
-                              UserCubit(UserRepository(ApiService())),
-                          child: const UserPage(),
-                        ),
+    return Column(
+      children: [
+        Center(
+          child: Column(
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => BlocProvider(
+                        create: (context) =>
+                            UserCubit(UserRepository(ApiService())),
+                        child: const UserPage(),
                       ),
-                    );
-                  },
-                  child: const Text("Click to go on the User Screen"),
-                ),
-                const SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => BlocProvider(
-                          create: (context) =>
-                              RecipesCubit(RecipesRepository(ApiService())),
-                          child: const RecipesPage(),
-                        ),
+                    ),
+                  );
+                },
+                child: const Text("Click to go on the User Screen"),
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => BlocProvider(
+                        create: (context) =>
+                            RecipesCubit(RecipesRepository(ApiService())),
+                        child: const RecipesPage(),
                       ),
-                    );
-                  },
-                  child: const Text("Click to go on the Recipes Screen"),
-                ),
-              ],
-            ),
+                    ),
+                  );
+                },
+                child: const Text("Click to go on the Recipes Screen"),
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
