@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:practice_flutter/cubit/user_cubit/cubit/user_cubit.dart';
+import 'package:practice_flutter/cubit/user_cubit/user_cubit.dart';
 
 class UserPage extends StatefulWidget {
   const UserPage({super.key});
