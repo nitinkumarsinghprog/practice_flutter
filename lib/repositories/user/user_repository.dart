@@ -8,13 +8,15 @@ class UserRepository implements IUserRepository {
   UserRepository(this.apiService);
 
   @override
-  Future<List<UserModel>> getUsers() async {
-    final response = await apiService.get('https://dummyjson.com/users');
+  Future<Map<String, dynamic>> getUsers(int skip, int limit) async {
+    final response = await apiService.get(
+      'https://dummyjson.com/users?skip=$skip&limit=$limit',
+    );
 
     final List<UserModel> users = (response.data['users'] as List)
         .map((user) => UserModel.fromJson(user))
         .toList();
 
-    return users;
+    return {'users': users, 'total': response.data['total']};
   }
 }

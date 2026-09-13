@@ -10,11 +10,26 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
-  String message = 'Calling API...';
+  final ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
     super.initState();
+
+    context.read<UserCubit>().getUsers();
+
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels >=
+          _scrollController.position.maxScrollExtent) {
+        context.read<UserCubit>().getMoreUsers();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 
   @override
@@ -33,6 +48,7 @@ class _UserPageState extends State<UserPage> {
 
           if (state is UserSuccess) {
             return ListView.builder(
+              controller: _scrollController,
               itemCount: state.users.length,
               itemBuilder: (context, index) {
                 final user = state.users[index];

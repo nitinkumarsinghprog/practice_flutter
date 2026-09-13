@@ -1,5 +1,4 @@
-import 'package:practice_flutter/models/user_model.dart';
 
 abstract class IUserRepository {
-  Future<List<UserModel>> getUsers();
+  Future<Map<String, dynamic>> getUsers(int skip, int limit);
 }
